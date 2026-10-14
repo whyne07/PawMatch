@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profile-banner {
+      background: linear-gradient(135deg, #ff8a3d 0%, #ff6b0d 100%);
+      border-radius: 20px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .profile-banner::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .profile-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .avatar-area {
+      position: relative;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .avatar-area img {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .edit-circle {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .user-info {
+      flex: 1;
+      z-index: 1;
+    }
+
+    .user-info h2 {
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+    }
+
+    .user-info .email {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 3px;
+    }
+
+    .user-info .member {
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 3px;
+    }
+
+    .user-stats {
+      display: flex;
+      gap: 24px;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item .num {
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+    }
+
+    .stat-item .lbl {
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .two-columns { grid-template-columns: 1fr; }
+    }
+
+    .history-card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin-bottom: 14px;
+    }
+
+    .history-card h3 {
+      font-weight: 900;
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .history-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 8px;
+    }
+
+    .history-row:last-child { margin-bottom: 0; }
+
+    .pet-emoji {
+      width: 34px;
+      height: 34px;
+      background: #fff0e8;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .history-row h4 {
+      font-weight: 900;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .history-row p {
+      font-size: 9px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .active-badge {
+      margin-left: auto;
+      background: #e8fff5;
+      color: #2d9e6a;
+      font-weight: 700;
+      font-size: 9px;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+
+    .dark-toggle {
+      background: white;
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toggle-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-left h4 {
+      font-weight: 900;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .toggle-left p {
+      font-size: 9px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .toggle-pill {
+      width: 38px;
+      height: 20px;
+      background: #ddd;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .toggle-knob {
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .settings-list {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .settings-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-bottom: 1px solid #f5f5f5;
+      transition: background 0.15s;
+      color: inherit;
+    }
+
+    .settings-row:last-child { border-bottom: none; }
+    .settings-row:hover { background: #fafafa; }
+
+    .settings-row h4 {
+      font-weight: 700;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .settings-row p {
+      font-size: 9px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .arrow {
+      margin-left: auto;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .logout-btn {
+      display: block;
+      width: 100%;
+      border: 2px solid #ff4d4d;
+      background: white;
+      color: #ff4d4d;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 14px;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .logout-btn:hover { background: #fff5f5; }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">🐾</div>
+      <nav>
+        <a href="home.html"      class="nav-link"><img src="assets/43d3c.svg" alt="" />Home</a>
+        <a href="browse.html"    class="nav-link"><img src="assets/c0b64.svg" alt="" />Browse</a>
+        <a href="favorites.html" class="nav-link"><img src="assets/5e9cc.svg" alt="" />Saved</a>
+        <a href="messages.html"  class="nav-link"><img src="assets/4d5bf.svg" alt="" />Chat</a>
+        <a href="profile.html"   class="nav-link active"><img src="assets/eca9c.svg" alt="" />Profile</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <img class="user-avatar" src="assets/5ca18.png" alt="User" />
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <div class="content-wrap">
+
+        <div class="profile-banner">
+          <div class="avatar-area">
+            <img src="assets/5ca18.png" alt="User" />
+            <div class="edit-circle">✏️</div>
+          </div>
+          <div class="user-info">
+            <h2>User1234</h2>
+            <div class="email">user1234@email.com</div>
+            <div class="member">Member since March 2023</div>
+          </div>
+          <div class="user-stats">
+            <div class="stat-item"><div class="num">3</div><div class="lbl">Adopted</div></div>
+            <div class="stat-item"><div class="num">2</div><div class="lbl">Favorites</div></div>
+            <div class="stat-item"><div class="num">5</div><div class="lbl">Messages</div></div>
+          </div>
+        </div>
+
+        <div class="two-columns">
+
+          <div>
+            <div class="history-card">
+              <h3>Adoption History</h3>
+              <div class="history-row">
+                <div class="pet-emoji">🐶</div>
+                <div>
+                  <h4>Charlie</h4>
+                  <p>Beagle · Adopted Jan 2024</p>
+                </div>
+                <span class="active-badge">Active</span>
+              </div>
+              <div class="history-row">
+                <div class="pet-emoji">🐱</div>
+                <div>
+                  <h4>Whiskers</h4>
+                  <p>Siamese · Adopted Aug 2023</p>
+                </div>
+                <span class="active-badge">Active</span>
+              </div>
+            </div>
+
+            <div class="dark-toggle">
+              <div class="toggle-left">
+                <span style="font-size: 20px;">☀️</span>
+                <div>
+                  <h4>Dark Mode</h4>
+                  <p>Light theme active</p>
+                </div>
+              </div>
+              <div class="toggle-pill">
+                <div class="toggle-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="settings-list">
+              <a href="#" class="settings-row">
+                <span style="font-size: 16px;">🔔</span>
+                <div><h4>Notifications</h4><p>3 new alerts</p></div>
+                <span class="arrow">›</span>
+              </a>
+              <a href="#" class="settings-row">
+                <span style="font-size: 16px;">📋</span>
+                <div><h4>My Applications</h4><p>2 pending</p></div>
+                <span class="arrow">›</span>
+              </a>
+              <a href="favorites.html" class="settings-row">
+                <span style="font-size: 16px;">❤️</span>
+                <div><h4>Favorites</h4><p>2 saved</p></div>
+                <span class="arrow">›</span>
+              </a>
+              <a href="#" class="settings-row">
+                <span style="font-size: 16px;">🔒</span>
+                <div><h4>Privacy &amp; Security</h4><p>Manage settings</p></div>
+                <span class="arrow">›</span>
+              </a>
+              <a href="#" class="settings-row">
+                <span style="font-size: 16px;">❓</span>
+                <div><h4>Help &amp; Support</h4><p>Get assistance</p></div>
+                <span class="arrow">›</span>
+              </a>
+            </div>
+
+            <a href="index.html" class="logout-btn">Log Out</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

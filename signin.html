@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Sign In</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 42%;
+      background: linear-gradient(160deg, #ff8a3d 0%, #ff6b0d 60%, #e55a00 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .left-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .logo span {
+      color: white;
+      font-weight: 900;
+      font-size: 24px;
+    }
+
+    .pet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+    }
+
+    .pet-thumb {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .pet-thumb img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+    }
+
+    .pet-count {
+      height: 90px;
+      background: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      color: white;
+      border-radius: 14px;
+    }
+
+    .tagline {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 28px;
+      line-height: 1.6;
+    }
+
+    .right-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 48px;
+      overflow-y: auto;
+    }
+
+    .right-panel h1 {
+      font-weight: 900;
+      font-size: 26px;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .right-panel .subtitle {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 26px;
+    }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .or-line {
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .or-text {
+      font-size: 11px;
+      color: #bbb;
+      font-weight: 600;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 11px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      background: white;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .social-btn:hover {
+      border-color: #ff8a3d;
+      background: #fff0e8;
+    }
+
+    .signup-link {
+      margin-top: 18px;
+      font-size: 11px;
+      color: #999;
+      text-align: center;
+    }
+
+    .signup-link a {
+      color: #ff8a3d;
+      font-weight: 700;
+    }
+
+    .forgot {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .forgot a {
+      font-size: 11px;
+      color: #ff8a3d;
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .layout { flex-direction: column; }
+      .left-panel { width: 100%; min-height: 220px; }
+      .right-panel { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+
+    <div class="left-panel">
+      <div class="logo">
+        <div class="logo-icon">🐾</div>
+        <span>PawMatch</span>
+      </div>
+
+      <div class="pet-grid">
+        <div class="pet-thumb"><img src="assets/daa74.png" alt="Luna" /></div>
+        <div class="pet-thumb"><img src="assets/d85f4.png" alt="Buddy" /></div>
+        <div class="pet-thumb"><img src="assets/4e9ab.png" alt="Alex" /></div>
+        <div class="pet-count">+5k Pets 🐾</div>
+      </div>
+
+      <p class="tagline">Join thousands of families who found their perfect companion through PawMatch.</p>
+    </div>
+
+    <div class="right-panel">
+      <h1>Welcome Back! 👋</h1>
+      <p class="subtitle">Sign in to continue your adoption journey</p>
+
+      <div class="input-group">
+        <label class="input-label">Email Address</label>
+        <input class="text-input" type="email" placeholder="user@email.com" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Password</label>
+        <input class="text-input" type="password" placeholder="Enter password" />
+      </div>
+
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <a href="home.html" class="btn-orange full-width" style="font-size: 14px; padding: 14px; border-radius: 14px;">Sign In →</a>
+
+      <div class="or-divider">
+        <div class="or-line"></div>
+        <span class="or-text">or continue with</span>
+        <div class="or-line"></div>
+      </div>
+
+      <div class="social-row">
+        <a href="home.html" class="social-btn">🇬 Google</a>
+        <a href="home.html" class="social-btn">🇫 Facebook</a>
+      </div>
+
+      <div class="signup-link">
+        Don't have an account? <a href="#">Sign Up</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

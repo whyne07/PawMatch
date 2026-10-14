@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Congratulations!</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .congrats-box {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 36px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .emoji-big {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .pet-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff8a3d, #ff6b0d);
+      padding: 4px;
+      margin: 0 auto 22px;
+      box-shadow: 0 8px 24px rgba(255, 138, 61, 0.4);
+    }
+
+    .pet-circle img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+    }
+
+    .congrats-box h1 {
+      font-weight: 900;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .congrats-box .subtitle {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .details-box {
+      background: #f8f8f8;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .detail-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .detail-line:last-child { border-bottom: none; }
+
+    .detail-line .key {
+      font-size: 11px;
+      color: #999;
+      font-weight: 700;
+    }
+
+    .detail-line .val {
+      font-size: 12px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .success-note {
+      background: #e8fff5;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .success-note p {
+      font-size: 11px;
+      color: #2d9e6a;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .share-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .share-btn {
+      flex: 1;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .share-btn:hover {
+      border-color: #ff8a3d;
+      color: #ff8a3d;
+    }
+  </style>
+</head>
+<body>
+  <div class="congrats-box">
+
+    <div class="emoji-big">🎊</div>
+
+    <div class="pet-circle">
+      <img src="assets/d85f4.png" alt="Buddy" />
+    </div>
+
+    <h1>Congratulations!</h1>
+    <p class="subtitle">
+      Buddy has a new home! 🐾<br />
+      Your adoption application has been approved. Welcome to the family!
+    </p>
+
+    <div class="details-box">
+      <div class="detail-line">
+        <span class="key">Application ID</span>
+        <span class="val">#PWM-2024-8823</span>
+      </div>
+      <div class="detail-line">
+        <span class="key">Pet Adopted</span>
+        <span class="val">Buddy · Golden Retriever</span>
+      </div>
+      <div class="detail-line">
+        <span class="key">Shelter</span>
+        <span class="val">Happy Paws Shelter</span>
+      </div>
+      <div class="detail-line">
+        <span class="key">Date</span>
+        <span class="val">September 24, 2026</span>
+      </div>
+    </div>
+
+    <div class="success-note">
+      <span style="font-size: 22px;">✅</span>
+      <p>The shelter will contact you within 24 hours to arrange the pickup. Thank you for giving Buddy a forever home!</p>
+    </div>
+
+    <a href="home.html" class="btn-orange full-width" style="font-size: 14px; padding: 14px; border-radius: 14px;">
+      Back to Home 🏠
+    </a>
+
+    <div class="share-btns">
+      <a href="#" class="share-btn">🐦 Tweet</a>
+      <a href="#" class="share-btn">📖 Share Story</a>
+    </div>
+
+  </div>
+</body>
+</html>

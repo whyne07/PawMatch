@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .campaign {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      height: 110px;
+      margin-bottom: 22px;
+    }
+
+    .campaign img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .campaign-text {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 138, 61, 0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 24px;
+    }
+
+    .campaign-text h3 {
+      font-weight: 900;
+      font-size: 16px;
+      color: white;
+    }
+
+    .campaign-text p {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 4px;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 22px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .top-bar h1 {
+      font-weight: 900;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .top-bar p {
+      font-size: 11px;
+      color: #999;
+      margin-top: 3px;
+    }
+
+    .top-bar img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff0e8;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">🐾</div>
+      <nav>
+        <a href="home.html"      class="nav-link active"><img src="assets/43d3c.svg" alt="" />Home</a>
+        <a href="browse.html"    class="nav-link"><img src="assets/c0b64.svg" alt="" />Browse</a>
+        <a href="favorites.html" class="nav-link"><img src="assets/5e9cc.svg" alt="" />Saved</a>
+        <a href="messages.html"  class="nav-link"><img src="assets/4d5bf.svg" alt="" />Chat</a>
+        <a href="profile.html"   class="nav-link"><img src="assets/6f7c5.svg" alt="" />Profile</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <img class="user-avatar" src="assets/5ca18.png" alt="User" />
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <div class="content-wrap">
+
+        <div class="top-bar">
+          <div>
+            <h1>Hello, User1234 👋</h1>
+            <p>Find your perfect companion today</p>
+          </div>
+          <img src="assets/5ca18.png" alt="User" />
+        </div>
+
+        <div class="search-bar" style="margin-bottom: 20px;">
+          <span style="font-size: 16px;">🔍</span>
+          <input type="text" placeholder="Search pets by name or breed..." />
+        </div>
+
+        <div class="campaign">
+          <img src="assets/c2674.png" alt="Adopt campaign" />
+          <div class="campaign-text">
+            <h3>Adopt, Don't Shop 🐾</h3>
+            <p>Give a pet a forever home</p>
+          </div>
+        </div>
+
+        <div class="category-pills">
+          <span class="chip active">🐾 All</span>
+          <a href="browse.html" class="chip">🐶 Dogs</a>
+          <a href="browse.html" class="chip">🐱 Cats</a>
+          <a href="browse.html" class="chip">🐰 Rabbits</a>
+          <a href="browse.html" class="chip">🐦 Birds</a>
+        </div>
+
+        <div class="section-title">Featured Pets ✨</div>
+        <div class="grid-4" style="margin-bottom: 28px;">
+
+          <a href="pet-detail.html" class="pet-card">
+            <img src="assets/d85f4.png" alt="Buddy" />
+            <div class="pet-card-body">
+              <div class="pet-name">Buddy</div>
+              <div class="pet-breed">Golden Retriever</div>
+              <div class="tag-row"><span class="tag">2 yrs</span><span class="tag tag-blue">Male</span></div>
+            </div>
+          </a>
+
+          <a href="pet-detail.html" class="pet-card">
+            <img src="assets/daa74.png" alt="Luna" />
+            <div class="pet-card-body">
+              <div class="pet-name">Luna</div>
+              <div class="pet-breed">Tabby Cat</div>
+              <div class="tag-row"><span class="tag">1 yr</span><span class="tag tag-pink">Female</span></div>
+            </div>
+          </a>
+
+          <a href="pet-detail.html" class="pet-card">
+            <img src="assets/c7e65.png" alt="Max" />
+            <div class="pet-card-body">
+              <div class="pet-name">Max</div>
+              <div class="pet-breed">Border Collie</div>
+              <div class="tag-row"><span class="tag">3 yrs</span><span class="tag tag-blue">Male</span></div>
+            </div>
+          </a>
+
+          <a href="pet-detail.html" class="pet-card">
+            <img src="assets/239a5.png" alt="Mochi" />
+            <div class="pet-card-body">
+              <div class="pet-name">Mochi</div>
+              <div class="pet-breed">Holland Lop</div>
+              <div class="tag-row"><span class="tag">8 mo</span><span class="tag tag-pink">Female</span></div>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="section-title">Nearby Pets 📍</div>
+
+        <div class="nearby-row">
+          <img src="assets/26bee.png" alt="Coco" />
+          <div class="nearby-info">
+            <div class="pet-name">Coco</div>
+            <div class="pet-breed">Shih Tzu · Female · 4 years</div>
+            <div class="distance">📍 2.5 km away</div>
+          </div>
+          <a href="pet-detail.html" class="adopt-link">Adopt</a>
+        </div>
+
+        <div class="nearby-row">
+          <img src="assets/9d00d.png" alt="Oliver" />
+          <div class="nearby-info">
+            <div class="pet-name">Oliver</div>
+            <div class="pet-breed">Persian Cat · Male · 2 years</div>
+            <div class="distance">📍 0.8 km away</div>
+          </div>
+          <a href="pet-detail.html" class="adopt-link">Adopt</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

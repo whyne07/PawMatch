@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Adopt Buddy</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .adopt-page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .back-btn {
+      width: 38px;
+      height: 38px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+
+    .back-btn:hover { background: #fff0e8; }
+
+    .page-header h1 {
+      font-weight: 900;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .page-header p {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .progress {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 5px;
+      border-radius: 10px;
+      background: #e8e8e8;
+    }
+
+    .progress-bar.filled { background: #ff8a3d; }
+
+    .step-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .step-labels span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #bbb;
+    }
+
+    .step-labels span.done { color: #ff8a3d; }
+
+    .pet-info-bar {
+      background: white;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .pet-info-bar img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .pet-info-bar h3 {
+      font-weight: 900;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .pet-info-bar p {
+      font-size: 11px;
+      color: #999;
+      margin-top: 3px;
+    }
+
+    .shelter-tag {
+      margin-left: auto;
+      background: #fff0e8;
+      color: #ff8a3d;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .form-section {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .form-section h2 {
+      font-weight: 900;
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 18px;
+    }
+
+    .housing-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .house-opt {
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .house-opt:hover { border-color: #ff8a3d; background: #fff9f6; }
+    .house-opt.picked { border-color: #ff8a3d; background: #fff0e8; }
+
+    .house-opt .emoji { font-size: 22px; margin-bottom: 6px; }
+    .house-opt .label { font-weight: 700; font-size: 11px; color: #444; }
+
+    .experience-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exp-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .exp-item:hover { border-color: #ff8a3d; }
+
+    .exp-item input[type=radio] {
+      accent-color: #ff8a3d;
+      width: 16px;
+      height: 16px;
+    }
+
+    .exp-item label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      cursor: pointer;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .summary-item {
+      background: #f8f8f8;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .summary-item .key {
+      font-size: 9px;
+      color: #999;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-item .val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #333;
+      margin-top: 4px;
+    }
+
+    .agree-notice {
+      background: #e8fff5;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .agree-notice p {
+      font-size: 11px;
+      color: #2d9e6a;
+      font-weight: 700;
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="adopt-page">
+
+    <div class="page-header">
+      <a href="pet-detail.html" class="back-btn">←</a>
+      <div>
+        <h1>Adoption Application</h1>
+        <p>Complete the form to adopt Buddy</p>
+      </div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar filled"></div>
+      <div class="progress-bar filled"></div>
+      <div class="progress-bar filled"></div>
+    </div>
+
+    <div class="step-labels">
+      <span class="done">Personal Info</span>
+      <span class="done">Living Situation</span>
+      <span class="done">Review &amp; Submit</span>
+    </div>
+
+    <div class="pet-info-bar">
+      <img src="assets/d85f4.png" alt="Buddy" />
+      <div>
+        <h3>Buddy 🐶</h3>
+        <p>Golden Retriever · 2 years · Male</p>
+      </div>
+      <div class="shelter-tag">Happy Paws Shelter</div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="form-section">
+      <h2>Step 1 — Personal Information</h2>
+      <div class="input-group">
+        <label class="input-label">Full Name</label>
+        <input class="text-input" type="text" value="User1234" />
+      </div>
+      <div class="input-group">
+        <label class="input-label">Phone Number</label>
+        <input class="text-input" type="tel" placeholder="+1 (555) 000-0000" />
+      </div>
+      <div class="input-group">
+        <label class="input-label">Home Address</label>
+        <input class="text-input" type="text" placeholder="123 Main Street, City, State" />
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-section">
+      <h2>Step 2 — Living Situation</h2>
+      <p style="font-size: 11px; color: #999; margin-bottom: 14px;">Select your housing type</p>
+      <div class="housing-options">
+        <div class="house-opt picked">
+          <div class="emoji">🏢</div>
+          <div class="label">Apartment</div>
+        </div>
+        <div class="house-opt">
+          <div class="emoji">🏡</div>
+          <div class="label">House with Yard</div>
+        </div>
+        <div class="house-opt">
+          <div class="emoji">🏘️</div>
+          <div class="label">Townhouse</div>
+        </div>
+        <div class="house-opt">
+          <div class="emoji">🌾</div>
+          <div class="label">Farm / Rural</div>
+        </div>
+      </div>
+      <p style="font-size: 11px; color: #999; margin-bottom: 10px; font-weight: 700;">Pet experience</p>
+      <div class="experience-options">
+        <div class="exp-item">
+          <input type="radio" name="experience" id="exp1" checked />
+          <label for="exp1">First-time pet owner</label>
+        </div>
+        <div class="exp-item">
+          <input type="radio" name="experience" id="exp2" />
+          <label for="exp2">I've had pets before</label>
+        </div>
+        <div class="exp-item">
+          <input type="radio" name="experience" id="exp3" />
+          <label for="exp3">Currently have other pets</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-section">
+      <h2>Step 3 — Review &amp; Submit</h2>
+      <div class="input-group">
+        <label class="input-label">Why do you want to adopt Buddy?</label>
+        <textarea class="text-input" placeholder="Tell us about yourself and why you'd be a great match..."></textarea>
+      </div>
+      <p style="font-size: 11px; color: #999; margin-bottom: 12px; font-weight: 700;">Application Summary</p>
+      <div class="summary-grid">
+        <div class="summary-item"><div class="key">Applicant</div><div class="val">User1234</div></div>
+        <div class="summary-item"><div class="key">Pet</div><div class="val">Buddy (Golden Retriever)</div></div>
+        <div class="summary-item"><div class="key">Housing</div><div class="val">Apartment</div></div>
+        <div class="summary-item"><div class="key">Experience</div><div class="val">First-time owner</div></div>
+      </div>
+      <div class="agree-notice">
+        <span style="font-size: 18px;">✅</span>
+        <p>By submitting, you agree to our adoption terms and conditions.</p>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <a href="pet-detail.html" class="btn-outline" style="flex: 1; justify-content: center;">Cancel</a>
+      <a href="congrats.html" class="btn-orange" style="flex: 2; justify-content: center; font-size: 14px; padding: 13px;">Submit Application 🐾</a>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Favorites</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .fav-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+
+    .fav-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+    }
+
+    .fav-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .fav-details {
+      flex: 1;
+    }
+
+    .fav-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .fav-name  { font-weight: 900; font-size: 15px; color: #333; }
+    .fav-breed { font-size: 11px; color: #888; margin-top: 3px; }
+
+    .remove-icon {
+      width: 30px;
+      height: 30px;
+      background: #fff0e8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .remove-icon:hover { background: #ffe0cc; }
+
+    .fav-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .fav-bottom .dist {
+      font-size: 10px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">🐾</div>
+      <nav>
+        <a href="home.html"      class="nav-link"><img src="assets/43d3c.svg" alt="" />Home</a>
+        <a href="browse.html"    class="nav-link"><img src="assets/c0b64.svg" alt="" />Browse</a>
+        <a href="favorites.html" class="nav-link active"><img src="assets/63aa0.svg" alt="" />Saved</a>
+        <a href="messages.html"  class="nav-link"><img src="assets/4d5bf.svg" alt="" />Chat</a>
+        <a href="profile.html"   class="nav-link"><img src="assets/6f7c5.svg" alt="" />Profile</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <img class="user-avatar" src="assets/5ca18.png" alt="User" />
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <div class="content-wrap">
+
+        <h1 class="page-heading">Favorites ❤️</h1>
+        <p class="page-subtext">2 saved pets</p>
+
+        <div class="grid-2" style="margin-top: 22px;">
+
+          <div class="fav-card">
+            <a href="pet-detail.html">
+              <img src="assets/d85f4.png" alt="Buddy" />
+            </a>
+            <div class="fav-details">
+              <div class="fav-top">
+                <div>
+                  <div class="fav-name">Buddy</div>
+                  <div class="fav-breed">Golden Retriever · 2 yrs · Male</div>
+                </div>
+                <a href="#" class="remove-icon">🗑️</a>
+              </div>
+              <div class="tag-row" style="margin-top: 8px;">
+                <span class="tag">Friendly</span>
+                <span class="tag">Playful</span>
+              </div>
+              <div class="fav-bottom">
+                <span class="dist">📍 1.2 km</span>
+                <a href="adopt.html" class="btn-orange" style="font-size: 11px; padding: 7px 14px; border-radius: 10px;">Adopt</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="fav-card">
+            <a href="pet-detail.html">
+              <img src="assets/daa74.png" alt="Luna" />
+            </a>
+            <div class="fav-details">
+              <div class="fav-top">
+                <div>
+                  <div class="fav-name">Luna</div>
+                  <div class="fav-breed">Tabby Cat · 1 yr · Female</div>
+                </div>
+                <a href="#" class="remove-icon">🗑️</a>
+              </div>
+              <div class="tag-row" style="margin-top: 8px;">
+                <span class="tag">Calm</span>
+                <span class="tag">Cuddly</span>
+              </div>
+              <div class="fav-bottom">
+                <span class="dist">📍 0.8 km</span>
+                <a href="adopt.html" class="btn-orange" style="font-size: 11px; padding: 7px 14px; border-radius: 10px;">Adopt</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

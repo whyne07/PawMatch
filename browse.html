@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawMatch - Browse</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .filter-panel {
+      width: 210px;
+      flex-shrink: 0;
+      background: white;
+      border-right: 1px solid #f0f0f0;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .filter-panel h2 {
+      font-weight: 900;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .filter-panel .result-count {
+      font-size: 10px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .filter-label {
+      font-size: 9px;
+      font-weight: 900;
+      color: #aaa;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .filter-option:hover { background: #f5f5f5; color: #555; }
+    .filter-option.active { background: #fff0e8; color: #ff8a3d; }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .clear-all {
+      width: 100%;
+      border: 2px solid #ff8a3d;
+      color: #ff8a3d;
+      background: white;
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      transition: background 0.15s;
+      margin-top: auto;
+    }
+
+    .clear-all:hover { background: #fff0e8; }
+
+    .browse-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .pets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1000px) { .pets-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 700px)  { .pets-grid { grid-template-columns: 1fr; } }
+
+    .browse-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      display: block;
+      color: inherit;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+
+    .browse-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+
+    .img-wrap {
+      position: relative;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .heart-icon {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .dist-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(255, 138, 61, 0.9);
+      border-radius: 20px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .card-info {
+      padding: 12px;
+    }
+
+    .card-info .name  { font-weight: 900; font-size: 13px; color: #333; }
+    .card-info .breed { font-size: 10px; color: #888; margin-top: 2px; }
+    .card-info .tags  { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">🐾</div>
+      <nav>
+        <a href="home.html"      class="nav-link"><img src="assets/43d3c.svg" alt="" />Home</a>
+        <a href="browse.html"    class="nav-link active"><img src="assets/20ed3.svg" alt="" />Browse</a>
+        <a href="favorites.html" class="nav-link"><img src="assets/5e9cc.svg" alt="" />Saved</a>
+        <a href="messages.html"  class="nav-link"><img src="assets/4d5bf.svg" alt="" />Chat</a>
+        <a href="profile.html"   class="nav-link"><img src="assets/6f7c5.svg" alt="" />Profile</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <img class="user-avatar" src="assets/5ca18.png" alt="User" />
+      </div>
+    </aside>
+
+    <div class="filter-panel">
+      <div>
+        <h2>Filters</h2>
+        <div class="result-count">8 results</div>
+      </div>
+
+      <div>
+        <div class="filter-label">Category</div>
+        <div class="filter-options">
+          <div class="filter-option active">🐾 All</div>
+          <div class="filter-option">🐶 Dogs</div>
+          <div class="filter-option">🐱 Cats</div>
+          <div class="filter-option">🐰 Rabbits</div>
+          <div class="filter-option">🐦 Birds</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="filter-label">Size</div>
+        <div class="chip-group">
+          <span class="chip active">All</span>
+          <span class="chip">Small</span>
+          <span class="chip">Medium</span>
+          <span class="chip">Large</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="filter-label">Gender</div>
+        <div class="chip-group">
+          <span class="chip active">All</span>
+          <span class="chip">Male</span>
+          <span class="chip">Female</span>
+        </div>
+      </div>
+
+      <button class="clear-all">Clear All Filters</button>
+    </div>
+
+    <div class="browse-content">
+      <div class="search-bar" style="margin-bottom: 18px;">
+        <span style="font-size: 16px;">🔍</span>
+        <input type="text" placeholder="Search by name or breed..." />
+      </div>
+
+      <div class="pets-grid">
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/d85f4.png" alt="Buddy" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 1.2 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Buddy</div>
+            <div class="breed">Golden Retriever</div>
+            <div class="tags"><span class="tag">2 yrs</span><span class="tag tag-blue">Male</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/daa74.png" alt="Luna" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 0.8 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Luna</div>
+            <div class="breed">Tabby Cat</div>
+            <div class="tags"><span class="tag">1 yr</span><span class="tag tag-pink">Female</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/c7e65.png" alt="Max" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 1.2 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Max</div>
+            <div class="breed">Border Collie</div>
+            <div class="tags"><span class="tag">3 yrs</span><span class="tag tag-blue">Male</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/239a5.png" alt="Mochi" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 3.1 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Mochi</div>
+            <div class="breed">Holland Lop</div>
+            <div class="tags"><span class="tag">8 mo</span><span class="tag tag-pink">Female</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/26bee.png" alt="Coco" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 2.5 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Coco</div>
+            <div class="breed">Shih Tzu</div>
+            <div class="tags"><span class="tag">4 yrs</span><span class="tag tag-pink">Female</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/9d00d.png" alt="Oliver" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 0.8 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Oliver</div>
+            <div class="breed">Persian Cat</div>
+            <div class="tags"><span class="tag">2 yrs</span><span class="tag tag-blue">Male</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/f23d4.png" alt="Daisy" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 1.2 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Daisy</div>
+            <div class="breed">Labrador</div>
+            <div class="tags"><span class="tag">1.5 yrs</span><span class="tag tag-pink">Female</span></div>
+          </div>
+        </a>
+
+        <a href="pet-detail.html" class="browse-card">
+          <div class="img-wrap">
+            <img src="assets/b4f02.png" alt="Pebbles" />
+            <div class="heart-icon">🤍</div>
+            <div class="dist-badge">📍 3.1 km</div>
+          </div>
+          <div class="card-info">
+            <div class="name">Pebbles</div>
+            <div class="breed">Rex Rabbit</div>
+            <div class="tags"><span class="tag">1 yr</span><span class="tag tag-pink">Female</span></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
